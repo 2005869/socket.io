@@ -20,6 +20,10 @@
 <script>
     var socket = io('http://localhost:8080');
 
+    socket.on('disconnect', () => {
+        console.log('client disconnected');
+    });
+
     socket.emit('helloWorld', {name: 2005869});
 
     function send(){

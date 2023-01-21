@@ -7,9 +7,13 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
 io.on('connection', (socket) => {
+
+    socket.on('disconnect', () => {
+        console.log(socket.id + ' disconnected')
+    });
     
     socket.on('helloWorld', (data) => {
-        console.log(data);
+        console.log(socket.id + ' connected');
     });
 
     socket.on('inputName', (data) => {
