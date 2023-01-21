@@ -10,5 +10,10 @@
     "socket.io"
   ],
   "author": "2005869",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "socket.io": "^4.5.4"
+  }
 }
