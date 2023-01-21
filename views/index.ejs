@@ -7,11 +7,31 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>Start Page</h1>
+    <hr>
+    <label for="">Name:</label>
+    <input type="text" name="" id="name" oninput="send()">
+    <button type="submit">Send</button>
+    <hr>
+    <p id="msgResult"></p>
 </body>
 <script src="https://cdn.socket.io/4.5.4/socket.io.min.js" integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI" crossorigin="anonymous"></script>
 
 <script>
     var socket = io('http://localhost:8080');
+
+    socket.emit('helloWorld', {name: 2005869});
+
+    function send(){
+        var input = document.getElementById('name');
+        console.log(input.value)
+        socket.emit('inputName', {name: input.value});
+    }
+
+    socket.on('result', (data) => {
+        var p = document.getElementById('msgResult');
+        console.log(data.msg);
+        p.innerHTML = data.msg;
+    });
 </script>
 </html>

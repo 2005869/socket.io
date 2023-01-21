@@ -7,8 +7,17 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
 io.on('connection', (socket) => {
-    console.log(socket);
-    console.log(socket.id);
+    
+    socket.on('helloWorld', (data) => {
+        console.log(data);
+    });
+
+    socket.on('inputName', (data) => {
+        console.log(data);
+        socket.emit('result', {msg: 'Hello ' + data.name});
+    });
+    
+
 });
 
 app.set('view engine', 'ejs');
